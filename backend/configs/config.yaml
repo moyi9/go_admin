@@ -1,0 +1,76 @@
+app:
+  # 应用基础信息，env 可用于区分 development/staging/production。
+  name: go_web
+  env: development
+
+server:
+  # Gin 服务监听配置；mode 支持 debug/release/test。
+  host: 0.0.0.0
+  port: 8080
+  mode: debug
+
+postgres:
+  # PostgreSQL 连接配置，默认指向 docker-compose 中的本地数据库。
+  host: localhost
+  port: 5432
+  user: go_web
+  password: go_web
+  database: go_web
+  ssl_mode: disable
+  timezone: Asia/Shanghai
+  max_open_conns: 20
+  max_idle_conns: 10
+
+redis:
+  # Redis 连接配置，默认指向 docker-compose 中的本地 Redis。
+  addr: localhost:6379
+  password: ""
+  db: 0
+
+jwt:
+  # JWT secret 生产环境必须替换；access_token_ttl 支持 Go duration，例如 2h、30m。
+  issuer: go_web
+  secret: change-me-in-production
+  access_token_ttl: 2h
+
+log:
+  # 日志配置；encoding 可用 console 或 json。
+  level: info
+  encoding: console
+
+cors:
+  # CORS 默认放开本地开发，生产环境建议收紧 allow_origins。
+  allow_origins:
+    - "*"
+  allow_methods:
+    - GET
+    - POST
+    - PUT
+    - DELETE
+    - OPTIONS
+  allow_headers:
+    - Authorization
+    - Content-Type
+    - X-Request-ID
+
+swagger:
+  # Swagger 文档开关，生产环境可关闭。
+  enabled: true
+
+upload:
+  # 文件上传配置：限制类型和大小，避免恶意文件写入。
+  dir: ./uploads
+  max_size: 5242880
+  allowed_exts:
+    - .jpg
+    - .jpeg
+    - .png
+    - .gif
+    - .webp
+
+seed:
+  # 默认种子账号只用于开发环境，生产环境必须关闭或改成显式初始化流程。
+  enabled: true
+  admin_username: admin
+  admin_email: admin@example.com
+  admin_password: admin123456
