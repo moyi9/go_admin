@@ -1,5 +1,7 @@
 # 后台管理控制
 
+[![GitHub](https://img.shields.io/badge/GitHub-moyi9/go_admin-0d7377?style=flat&logo=github)](https://github.com/moyi9/go_admin)
+
 企业级权限管理后台，提供用户管理、角色权限、通知中心、操作审计等完整功能。前端基于 Vue 3 + Element Plus，后端基于 Gin + PostgreSQL + Redis。
 
 ## 技术栈
@@ -64,6 +66,17 @@
 - Node.js >= 20
 - Go >= 1.21
 - Docker & Docker Compose（PostgreSQL + Redis）
+
+### 配置
+
+```bash
+# 后端配置（含数据库密码、JWT密钥、管理员密码）
+cp backend/configs/config.example.yaml backend/configs/config.yaml
+# 编辑 config.yaml 填入你的配置
+
+# 前端环境变量（可选，默认指向 /api/v1）
+cp frontend/.env.development frontend/.env.development.local
+```
 
 ### 启动后端
 

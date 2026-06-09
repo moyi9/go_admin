@@ -1,0 +1,23 @@
+# 依赖
+frontend/node_modules/
+
+# 构建产物
+frontend/dist/
+backend/tmp/
+
+# 用户上传文件
+backend/uploads/
+
+# 环境配置（含敏感信息）
+backend/configs/config.yaml
+frontend/.env*.local
+
+# IDE
+.idea/
+.vscode/
+
+# 个人 / 临时
+.claude/
+todo.md
+*.exe
+*.out
